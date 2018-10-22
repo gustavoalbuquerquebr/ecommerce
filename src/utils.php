@@ -76,3 +76,24 @@ function require_default_header($page_title, $custom_stylesheet = "") {
 function require_default_footer() {
   require make_url("src/template/footer.php");
 }
+
+
+// CONVERSION
+
+// https://secure.php.net/manual/en/function.ini-get.php
+function return_bytes($val) {
+    
+  $last = strtolower($val[strlen($val)-1]);
+  $val = str_ireplace(["g", "m", "k"], "", $val);
+
+    switch($last) {
+        case 'g':
+            $val *= 1024;
+        case 'm':
+            $val *= 1024;
+        case 'k':
+            $val *= 1024;
+    }
+
+    return $val;
+}

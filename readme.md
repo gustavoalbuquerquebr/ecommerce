@@ -12,9 +12,9 @@ Basic Content Management System for e-commerce written in vanilla PHP using OOP.
 
 - footer
 - delete images product_edit
-- upload default errors
 - pagination oop
--
+- upload class version 2
+- js upload validation
 
 ---
 

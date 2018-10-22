@@ -4,14 +4,25 @@ namespace CMS;
 
 class Upload {
 
-  protected static $size_limit;
+  // PHP default size: 2M (1024 * 1024 * 2)
+  protected const MAX_FILE_SIZE = 2097152;
   protected static $allowed_extensions = [];
 
   protected $errors = [];
 
 
   public function __construct($upload_folder) {
+    
+    if ($this::MAX_FILE_SIZE > return_bytes(ini_get("upload_max_filesize"))) {
+      throw new \Exception("MAX_FILE_SIZE class constant can be bigger than the upload_max_filesize at ini.php");
+    }
+
     $this->upload_folder = $upload_folder;
+  }
+
+
+  public static function max_file_size() {
+    return static::MAX_FILE_SIZE;
   }
 
 
@@ -29,7 +40,12 @@ class Upload {
       $name_array = explode(".", $name);
       $extension = end($name_array);
 
-      if ($size > $this::$size_limit) {
+      // case 1 and 2 are handle with $this::MAX_FILE_SIZE bellow
+      if (in_array($error, [3, 6, 7, 8])) {
+        $this->errors[] = "$name: Server error";
+      }
+
+      if ($size > $this::MAX_FILE_SIZE) {
         $this->errors[] = "$name: Size Limit Exceeded";
       }
 

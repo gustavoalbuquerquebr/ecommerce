@@ -70,6 +70,7 @@ $description = $product->description;
       <input type="text" name="name" value="<?= $name; ?>">
       <input type="number" step="0.01" name="price" value="<?= $price; ?>">
       <textarea name="description"><?= $description; ?></textarea>
+      <input type="hidden" name="MAX_FILE_SIZE" value="<?= ImageUpload::max_file_size(); ?>">
       <input type="file" name="uploads[]" multiple>
       <input type="submit">
     </form>
