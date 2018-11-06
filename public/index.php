@@ -3,8 +3,13 @@
 require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
 use \CMS\Product;
+use \CMS\Pagination;
 
-$products = array_reverse(Product::fetch_all());
+$total_products = Product::count();
+$current_page = $_GET["page"] ?? 1;
+$pagination = new Pagination($current_page, $total_products, PRODUCTS_PER_PAGE);
+
+$products = Product::fetch_limit($pagination->per_page, $pagination->offset);
 
 ?>
 <?php require_default_header("Homepage"); ?>
@@ -33,6 +38,9 @@ $products = array_reverse(Product::fetch_all());
         <hr style="margin-bottom: 2.5rem">
         
       <?php endforeach; ?>
+
+      <a href="index.php?page=<?= $pagination->prev_page(); ?>" class="<?= $pagination->disable_prev(); ?>">&laquo; Previous</a>
+      <a href="index.php?page=<?= $pagination->next_page(); ?>" class="<?= $pagination->disable_next(); ?>">Next &raquo;</a>
 
     <?php endif; ?>
   

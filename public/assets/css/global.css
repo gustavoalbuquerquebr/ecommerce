@@ -1,3 +1,4 @@
-body {
-  background: pink;
+.disabled {
+  color: gray;
+  pointer-events: none;
 }

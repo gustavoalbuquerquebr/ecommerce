@@ -19,9 +19,36 @@ abstract class DatabaseObject {
   }
 
 
-  public static function fetch_all() {
+  public static function count() {
+
+    $query = "SELECT COUNT(*) FROM " . static::$table;
+
+    $stmt = static::$database->query($query);
+
+    $count = $stmt->fetch()[0];
+    return $count;
+  }
+
+
+  public static function fetch_all($order = "DESC") {
     
     $query = "SELECT * FROM " . static::$table;
+    $query .= " ORDER BY id $order";
+
+    $stmt = static::$database->query($query);
+
+    // bellow code its shorten than use a while loop to apply
+    // "\PDO::FETCH_CLASS, get_called_class()" to each row individually
+    $array_objects = $stmt->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, get_called_class());
+
+    return $array_objects;
+  }
+
+
+  public static function fetch_limit($limit, $offset = 0, $order = "DESC") {
+    
+    $query = "SELECT * FROM " . static::$table;
+    $query .= " ORDER BY id $order LIMIT $limit OFFSET $offset";
 
     $stmt = static::$database->query($query);
 

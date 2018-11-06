@@ -6,6 +6,8 @@ use \CMS\Product;
 
 $product = Product::fetch_by_id($_GET["id"]);
 
+!$product && redirect_to("public/index.php");
+
 ?>
 <?php require_default_header(""); ?>
 
