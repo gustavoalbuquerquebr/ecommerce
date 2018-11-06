@@ -13,22 +13,28 @@ $products = array_reverse(Product::fetch_all());
   
     <h1>Homepage</h1>
 
-    <?php foreach ($products as $product): ?>
+    <?php if (count($products) === 0): ?>
+      <h4>No products available</h4>
+    <?php else: ?>
 
-      <h3><?= $product->id; ?></h3>
-      <h3><?= $product->name; ?></h3>
+      <?php foreach ($products as $product): ?>
 
-      <?php if ($images = $product->images()): ?>
-        <?php foreach ($images as $image): ?>
-          <img src="<?= $image; ?>" width="50" >
-        <?php endforeach; ?>
-      <?php endif; ?>
+        <h3><?= $product->id . " - " . $product->name; ?></h3>
 
-      <h6><?= $product->price(); ?></h6>
-      <p><?= $product->description; ?></p>
-      <p><a href="<?= make_url("public/product.php?id={$product->id}", true); ?>">View Product</a></p>
-      <hr style="margin-bottom: 2.5rem">
-    <?php endforeach; ?>
+        <?php if ($images = $product->images()): ?>
+          <?php foreach ($images as $image): ?>
+            <img src="<?= $image; ?>" width="50" >
+          <?php endforeach; ?>
+        <?php endif; ?>
+
+        <h6><?= $product->price(); ?></h6>
+        <p><?= $product->description; ?></p>
+        <p><a href="<?= make_url("public/product.php?id={$product->id}", true); ?>">View Product</a></p>
+        <hr style="margin-bottom: 2.5rem">
+        
+      <?php endforeach; ?>
+
+    <?php endif; ?>
   
   </main>
 
