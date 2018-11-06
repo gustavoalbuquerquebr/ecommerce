@@ -10,6 +10,7 @@ Basic Content Management System for e-commerce written in vanilla PHP using OOP.
 
 ### TODO
 
+- no products to show message
 - footer
 - delete images product_edit
 - pagination oop
