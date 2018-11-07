@@ -10,7 +10,19 @@ require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "config/database.
 
 require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/utils.php";
 
-CMS\DatabaseObject::set_database(new_db_connection());
+try {
+  CMS\DatabaseObject::set_database(new_db_connection());
+} catch(Exception $e) {
+
+  $current = $_SERVER["PHP_SELF"];
+  $index = $_SERVER["PROJECT_ROOT"] . "index.php";
+  $install = $_SERVER["PROJECT_ROOT"] . "install.php";
+
+  if ($current !== $index && $current !== $install) {
+    redirect_to("");
+  }
+
+}
 
 $session = new CMS\Session;
 
