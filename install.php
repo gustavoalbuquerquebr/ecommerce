@@ -4,31 +4,23 @@ require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
 use \CMS\Install;
 
-try {
+check_db_connection() && redirect_to("public/index.php");
 
-  CMS\DatabaseObject::set_database(new_db_connection());
+if (!empty($_POST)) {
+
+  // print_r($_POST);
+
+  $dbhost = $_POST["dbhost"];
+  $dbuser = $_POST["dbuser"];
+  $dbpass = $_POST["dbpass"];
+  $dbname = $_POST["dbname"];
+  $project = $_POST["project"];
+  $email = $_POST["email"];
+  $pass = $_POST["pass"];
+
+  $install = new Install($dbhost, $dbuser, $dbpass, $dbname, $project, $email, $pass);
   redirect_to("public/index.php");
-
-} catch (Exception $e) {
-
-  if (!empty($_POST)) {
-
-    // print_r($_POST);
-
-    $dbhost = $_POST["dbhost"];
-    $dbuser = $_POST["dbuser"];
-    $dbpass = $_POST["dbpass"];
-    $dbname = $_POST["dbname"];
-    $project = $_POST["project"];
-    $email = $_POST["email"];
-    $pass = $_POST["pass"];
-
-    $install = new Install($dbhost, $dbuser, $dbpass, $dbname, $project, $email, $pass);
-    redirect_to("public/index.php");
-  }
-
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

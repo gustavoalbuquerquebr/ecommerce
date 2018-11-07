@@ -1,6 +1,6 @@
 <?php
 
-define("PROJECT_NAME", "myCMS");
+define("PROJECT_NAME", "myCMS ecommerce");
 
 // $_SERVER["PROJECT_ROOT"] is defined at .htaccess
 define("ROOT", $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"]);
