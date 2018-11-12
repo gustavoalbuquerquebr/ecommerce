@@ -2,7 +2,7 @@
 
 require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
-use \CMS\Product;
+use \cms\Product;
 
 $product = Product::fetch_by_id($_GET["id"]);
 

@@ -2,8 +2,8 @@
 
 require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
-use \CMS\Product;
-use \CMS\ImageUpload;
+use \cms\Product;
+use \cms\ImageUpload;
 
 if (!empty($_POST)) {
 

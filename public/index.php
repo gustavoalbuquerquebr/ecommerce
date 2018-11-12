@@ -2,8 +2,8 @@
 
 require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
-use \CMS\Product;
-use \CMS\Pagination;
+use \cms\Product;
+use \cms\Pagination;
 
 $total_products = Product::count();
 $current_page = $_GET["page"] ?? 1;

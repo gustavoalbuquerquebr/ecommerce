@@ -4,7 +4,7 @@ require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
 $session->is_logged_in() && redirect_to("public/admin/");
 
-use \CMS\Admin;
+use \cms\Admin;
 
 if (!empty($_POST)) {
 

@@ -2,7 +2,7 @@
 
 require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
-use \CMS\Install;
+use \cms\Install;
 
 check_db_connection() && redirect_to("public/index.php");
 

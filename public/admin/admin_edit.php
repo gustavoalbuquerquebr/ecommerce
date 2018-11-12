@@ -4,7 +4,7 @@ require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
 empty($_GET) && empty($_POST) && redirect_to("public/admin/index.php");
 
-use \CMS\Admin;
+use \cms\Admin;
 
 if (!empty($_GET)) {
   $admin = Admin::fetch_by_id($_GET["id"]);

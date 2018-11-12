@@ -2,3 +2,7 @@
   color: gray;
   pointer-events: none;
 }
+
+.d-none {
+  display: none;
+}

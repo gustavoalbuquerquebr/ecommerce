@@ -4,8 +4,8 @@ require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
 empty($_GET) && empty($_POST) && redirect_to("public/admin/index.php");
 
-use \CMS\Product;
-use \CMS\ImageUpload;
+use \cms\Product;
+use \cms\ImageUpload;
 
 if (!empty($_GET)) {
   $product = Product::fetch_by_id($_GET["id"]);
