@@ -1,6 +1,6 @@
 <?php
 
-namespace CMS;
+namespace cms;
 
 class Transaction extends DatabaseObject {
 

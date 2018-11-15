@@ -2,7 +2,7 @@
 
 require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
-use CMS\Transaction;
+use cms\Transaction;
 
 // delete from cart
 if (isset($_POST["cart"])) {

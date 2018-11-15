@@ -30,7 +30,7 @@ if (!empty($_POST)) {
         $messages = $result[1];
       }
     }
-
+    
     !isset($messages) && redirect_to("public/admin/products.php");
 
   } else {

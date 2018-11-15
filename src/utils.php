@@ -14,7 +14,7 @@ function new_db_connection(): \PDO {
 
 function check_db_connection() {
   try {
-    CMS\DatabaseObject::set_database(new_db_connection());
+    cms\DatabaseObject::set_database(new_db_connection());
     return true;
   } catch (Exception $e) {
     return false;

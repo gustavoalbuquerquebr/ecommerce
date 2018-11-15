@@ -11,7 +11,7 @@ require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "config/database.
 require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/utils.php";
 
 try {
-  CMS\DatabaseObject::set_database(new_db_connection());
+  cms\DatabaseObject::set_database(new_db_connection());
 } catch(Exception $e) {
 
   $current = $_SERVER["PHP_SELF"];
@@ -24,11 +24,11 @@ try {
 
 }
 
-$login = new CMS\Login;
+$login = new cms\Login;
 
 // if not logged, can't access any page inside admin, except login.php
 if (strpos($_SERVER["PHP_SELF"], "public/admin") !== false && strpos($_SERVER["PHP_SELF"], "public/admin/login.php") === false) {
   !$login->is_logged_in() && redirect_to("public/admin/login.php");
 }
 
-$cart = new CMS\Cart;
+$cart = new cms\Cart;
