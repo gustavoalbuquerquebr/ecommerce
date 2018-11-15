@@ -13,9 +13,13 @@
 <nav style="display: flex; justify-content: space-between; align-items: center;">
   <h3><a href="<?= make_url("public", true); ?>"><?=  PROJECT_NAME; ?></a></h3>
   <div>
+    <span><a href="<?= make_url("public/cart.php", true); ?>">Cart</a></span>
     <span><a href="<?= make_url("public/admin", true); ?>">Admin</a></span>
-    <?php if (!empty($_SESSION)): ?>
+    <?php if ($GLOBALS["login"]->is_logged_in()): ?>
       <span><a href="<?= make_url("public/admin/logout.php", true); ?>">Log out</a></span>
     <?php endif; ?>
+    <!-- <?php if (!empty($_SESSION["logged_id"])): ?>
+      <span><a href="<?= make_url("public/admin/logout.php", true); ?>">Log out</a></span>
+    <?php endif; ?> -->
   </div>
 </nav>

@@ -2,16 +2,11 @@
 
 Basic Content Management System for e-commerce written in vanilla PHP using OOP with Stripe API integration. Works with MySQL and MariaDB through the PDO extension and the Active Record pattern. Requires PHP 7+.
 
-### FEATURES
-
-- Products and admin management;
-
 ---
 
 ### TODO
 
-- Shop cart
-- js upload validation
+- Front-end
 
 ---
 

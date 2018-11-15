@@ -19,4 +19,9 @@ class Transaction extends DatabaseObject {
 
   public function format() {}
 
+  public function price() {
+    $price = "$" . $this->price / 100;
+    return $price;
+  }
+
 }

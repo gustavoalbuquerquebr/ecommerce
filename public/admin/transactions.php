@@ -30,7 +30,7 @@ $transactions = Transaction::fetch_all("ASC");
             <td><?= $transaction->client; ?></td>
             <td><?= $transaction->card; ?></td>
             <td><?= $transaction->product; ?></td>
-            <td><?= $transaction->price; ?></td>
+            <td><?= $transaction->price(); ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

@@ -77,6 +77,34 @@ abstract class DatabaseObject {
   }
 
 
+  public static function fetch_by_id_array($array_id) {
+
+    $arr_objs = [];
+
+    foreach ($array_id as $id) {
+  
+      $query = "SELECT * FROM " . static::$table;
+      $query .= " WHERE id = $id";
+  
+      $stmt = static::$database->query($query);
+
+      if ($stmt === false) {
+        return false;
+      }
+  
+      // both couple of lines do the same job:
+      // $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+      // $obj = new static($row);
+      $stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, get_called_class());
+      $obj = $stmt->fetch();
+  
+      $arr_objs[] = $obj;
+    }
+
+    return $arr_objs;
+  }
+
+
   protected function attributes() {
 
     $attributes = [];

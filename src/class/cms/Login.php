@@ -2,7 +2,7 @@
 
 namespace CMS;
 
-class Session {
+class Login {
   
   public  $logged_id;
   public  $logged_email;
@@ -16,7 +16,7 @@ class Session {
 
     session_start();
 
-    if (!empty($_SESSION)) {
+    if (!empty($_SESSION["logged_id"])) {
       $now = new \DateTime;
       $now = $now->getTimeStamp();
 
@@ -59,9 +59,7 @@ class Session {
 
 
   public function log_out() {
-    unset($this->logged_id);
-    unset($this->logged_email);
-    unset($this->last_activity);
-    $_SESSION = [];
+    unset($this->logged_id, $this->logged_email, $this->last_activity);
+    unset($_SESSION["logged_id"], $_SESSION["logged_email"], $_SESSION["last_activity"]);
   }
 }

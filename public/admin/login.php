@@ -2,7 +2,7 @@
 
 require $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"] . "src/init.php";
 
-$session->is_logged_in() && redirect_to("public/admin/");
+$login->is_logged_in() && redirect_to("public/admin/");
 
 use \cms\Admin;
 
@@ -19,7 +19,7 @@ if (!empty($_POST)) {
 
     $user = Admin::fetch_by_email($email);
 
-    if (!empty($user) && $session->log_in($user["email"], $password)) {
+    if (!empty($user) && $login->log_in($user["email"], $password)) {
       redirect_to("public/admin/index.php");
     } else {
       $error = "Incorret login information";

@@ -24,9 +24,11 @@ try {
 
 }
 
-$session = new CMS\Session;
+$login = new CMS\Login;
 
 // if not logged, can't access any page inside admin, except login.php
 if (strpos($_SERVER["PHP_SELF"], "public/admin") !== false && strpos($_SERVER["PHP_SELF"], "public/admin/login.php") === false) {
-  !$session->is_logged_in() && redirect_to("public/admin/login.php");
+  !$login->is_logged_in() && redirect_to("public/admin/login.php");
 }
+
+$cart = new CMS\Cart;
