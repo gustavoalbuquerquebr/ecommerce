@@ -87,6 +87,20 @@ function require_default_footer() {
   require make_url("src/template/footer.php");
 }
 
+function generate_script_path() {
+
+  $self = $_SERVER["PHP_SELF"];
+  $public = $_SERVER["PROJECT_ROOT"] . "public/";
+  $diff = str_replace($public, "", $self);
+  $js = "public/assets/js/" . str_replace("php", "js", $diff);
+
+  $server_path = make_url($js);
+  $client_path = make_url($js, true);
+  $path = ["server_path" => $server_path, "client_path" => $client_path];
+
+  return $path;
+}
+
 
 // CONVERSION
 

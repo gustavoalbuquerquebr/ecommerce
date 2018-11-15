@@ -6,3 +6,7 @@
 .d-none {
   display: none;
 }
+
+input[type="submit"] {
+  text-transform: capitalize;
+}

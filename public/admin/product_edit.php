@@ -37,6 +37,15 @@ if (!empty($_POST)) {
     }
   }
 
+  if (!empty($_POST["delete"])) {
+    $images = explode(",", $_POST["delete"]);
+
+    foreach ($images as $image) {
+      $path = make_url(preg_replace("/.*(?=public)/", "", $image));
+      file_exists($path) && unlink($path);
+    }
+
+  }
 }
 
 $id = $product->id;
@@ -51,30 +60,37 @@ $description = $product->description;
 
     <h1>Edit product</h1>
 
-    <div>
-      <?php if (isset($messages)): ?>
+    <?php if (isset($messages)): ?>
+      <div>
         <?php foreach($messages as $message): ?>
           <li><?= $message; ?></li>
         <?php endforeach; ?>
-      <?php endif; ?>
-    </div>
+      </div>
+    <?php endif; ?>
 
     <?php if ($images = $product->images()): ?>
-      <?php foreach ($images as $image): ?>
-        <img src="<?= $image; ?>" width="50" >
-      <?php endforeach; ?>
+      <div id="images">
+        <?php foreach ($images as $image): ?>
+          <img src="<?= $image; ?>" width="50" >
+        <?php endforeach; ?>
+      </div>
     <?php endif; ?>
   
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" id="edit" enctype="multipart/form-data">
       <input type="number" name="id" value="<?= $id; ?>" style="display: none;">
       <input type="text" name="name" value="<?= $name; ?>">
       <input type="number" step="0.01" name="price" value="<?= $price; ?>">
       <textarea name="description"><?= $description; ?></textarea>
       <input type="hidden" name="MAX_FILE_SIZE" value="<?= ImageUpload::max_file_size(); ?>">
       <input type="file" name="uploads[]" multiple>
-      <input type="submit">
+      <input type="text" name="delete" value="" class="d-none" id="delete">
+      <input type="submit" name="submit" value="submit">
     </form>
 
   </main>
+
+  <script>
+    let self = "<?= $_SERVER["PHP_SELF"]; ?>";
+  </script>
 
 <?php require_default_footer(); ?>
