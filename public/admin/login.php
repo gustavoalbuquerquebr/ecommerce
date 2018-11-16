@@ -30,16 +30,20 @@ if (!empty($_POST)) {
 ?>
 <?php require_default_header("Login") ?>
 
-  <main>
+  <main class="container">
   
     <?php if (isset($error)): ?>
       <p><?= $error; ?></p>
     <?php endif; ?>
 
-    <form method="post">
-      <input type="text" name="email" placeholder="Email">
-      <input type="password" name="password" placeholder="Password">
-      <input type="submit">
+    <form method="post" class="login-form mx-auto">
+      <div class="form-group">
+        <input class="form-control" type="text" name="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" name="password" placeholder="Password">
+      </div>
+      <input class="btn btn-primary" type="submit">
     </form>
   
   </main>

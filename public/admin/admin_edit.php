@@ -32,7 +32,7 @@ $email = $admin->email;
 ?>
 <?php require_default_header("Edit admin"); ?>
 
-  <main>
+  <main class="container">
 
     <h1>Edit admin</h1>
 
@@ -44,11 +44,17 @@ $email = $admin->email;
       <?php endif; ?>
     </div>
   
-    <form method="post">
-      <input type="number" name="id" value="<?= $id; ?>" style="display: none;">
-      <input type="text" name="email" value="<?= $email; ?>">
-      <input type="password" name="password" value="">
-      <input type="submit">
+    <form method="post" class="edit-admin mx-auto">
+      <div class="form-group">
+        <input class="form-control" type="number" name="id" value="<?= $id; ?>" style="display: none;">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="email" value="<?= $email; ?>">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" name="password" value="">
+      </div>
+      <input type="submit" class="btn btn-primary">
     </form>
 
   </main>

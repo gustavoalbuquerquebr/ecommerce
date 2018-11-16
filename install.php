@@ -31,7 +31,7 @@ if (!empty($_POST)) {
   <title>Installation</title>
 </head>
 <body>
-  <main>
+  <main class="container">
   
     <form method="post"">
       <input type="text" name="dbhost" placeholder="db host">

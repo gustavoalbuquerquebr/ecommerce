@@ -14,33 +14,41 @@ $products = Product::fetch_limit($pagination->per_page, $pagination->offset);
 ?>
 <?php require_default_header("Homepage"); ?>
 
-  <main>
+  <main class="container">
   
-    <h1>Homepage</h1>
-
     <?php if (count($products) === 0): ?>
       <h4>No products available</h4>
     <?php else: ?>
 
-      <?php foreach ($products as $product): ?>
+      <div class="my-deck">
+      
+        <?php foreach ($products as $product): ?>
 
-        <h3><?= $product->id . " - " . $product->name; ?></h3>
+          <?php
+            $images = $product->images();
+            if (!empty($images)) $image = end($images);
+          ?>
 
-        <?php if ($images = $product->images()): ?>
-          <?php foreach ($images as $image): ?>
-            <img src="<?= $image; ?>" width="50" >
-          <?php endforeach; ?>
-        <?php endif; ?>
+          <div class="card my-card">
+            <?php if (isset($image)): ?>
+              <img class="card-img-top" src="<?= $image; ?>" alt="Card image cap">
+            <?php endif; ?>
+            <div class="card-body">
+              <h5 class="card-title"><?= $product->id . " - " . $product->name; ?></h5>
+              <p class="card-text"><?= $product->price(); ?></p>
+              <p class="card-text"><?= $product->description(); ?></p>
+              <p><a href="<?= "product.php?id=" . $product->id; ?>">View &raquo;</a></p>
+            </div>
+          </div>
+          
+        <?php endforeach; ?>
 
-        <h6><?= $product->price(); ?></h6>
-        <p><?= $product->description; ?></p>
-        <p><a href="<?= make_url("public/product.php?id={$product->id}", true); ?>">View Product</a></p>
-        <hr style="margin-bottom: 2.5rem">
-        
-      <?php endforeach; ?>
+      </div>
 
-      <a href="index.php?page=<?= $pagination->prev_page(); ?>" class="<?= $pagination->disable_prev(); ?>">&laquo; Previous</a>
-      <a href="index.php?page=<?= $pagination->next_page(); ?>" class="<?= $pagination->disable_next(); ?>">Next &raquo;</a>
+      <div class="mt-3 d-flex justify-content-center">
+        <a href="index.php?page=<?= $pagination->prev_page(); ?>" class="<?= $pagination->disable_prev(); ?> mr-3">&laquo; Previous</a>
+        <a href="index.php?page=<?= $pagination->next_page(); ?>" class="<?= $pagination->disable_next(); ?> ml-3">Next &raquo;</a>
+      </div>
 
     <?php endif; ?>
   

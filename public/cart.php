@@ -70,15 +70,15 @@ if (isset($_POST["stripeToken"])) {
 ?>
 <?php require_default_header("Homepage"); ?>
 
-  <main>
+  <main class="container">
   
     <h1>Cart</h1>
 
     <?php if (!$products): ?>
       <h5>No products in the cart</h5>
     <?php else: ?>
-      <table>
-        <thead>
+      <table class="table table-striped text-center mt-4">
+        <thead class="thead-dark">
           <th>Product</th>
           <th>Price</th>
           <th>(remove)</th>
@@ -93,7 +93,7 @@ if (isset($_POST["stripeToken"])) {
           <?php endforeach; ?>
         </tbody>
       </table>
-      <p>Total: <span id="total"><?= $total_currency; ?></span></p>
+      <p class="my-4 font-weight-bold">Total: <span id="total"><?= $total_currency; ?></span></p>
     <?php endif; ?>
 
     <?php if ($total > 0): ?>

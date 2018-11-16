@@ -1,12 +1,10 @@
 # e-Commerce CMS Project
 
-Basic Content Management System for e-commerce written in vanilla PHP using OOP with Stripe API integration. Works with MySQL and MariaDB through the PDO extension and the Active Record pattern. Requires PHP 7+.
+Basic Content Management System for e-commerce written in vanilla PHP using OOP with Stripe API integration. Works with MySQL and MariaDB through the PDO extension and the Active Record pattern. Styled with Bootstrap. Requires PHP 7+.
 
 ---
 
 ### TODO
-
-- Front-end
 
 ---
 

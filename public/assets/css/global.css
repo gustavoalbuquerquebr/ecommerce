@@ -1,3 +1,15 @@
+/* sticky footer */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+/* sticky footer */
+
 .disabled {
   color: gray;
   pointer-events: none;
@@ -9,4 +21,61 @@
 
 input[type="submit"] {
   text-transform: capitalize;
+}
+
+.my-deck {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.my-card {
+  flex-basis: 100%;
+}
+
+.my-carousel {
+  text-align: center;
+}
+
+.my-carousel img {
+  height: 250px;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#000000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#000000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+.admin-list-group {
+  width: 90%;
+  max-width: 350px;
+}
+
+.login-form,
+.create-admin,
+.edit-admin {
+  max-width: 400px;
+}
+
+@media (min-width: 576px) {
+  .my-card {
+    flex-basis: 45%;
+    margin: calc(10% / 6);
+  }
+}
+
+@media (min-width: 992px) {
+  .my-card {
+    flex-basis: 30%;
+    margin: calc(10% / 6);
+  }
+}
+
+@media (min-width: 1200px) {
+  .my-card {
+    flex-basis: 22%;
+    margin: calc(12% / 8);
+  }
 }

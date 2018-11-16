@@ -46,7 +46,7 @@ $description = $_POST["description"] ?? "";
 ?>
 <?php require_default_header("Create product"); ?>
 
-  <main>
+  <main class="container">
   
     <h1>Create product</h1>
 
@@ -59,12 +59,20 @@ $description = $_POST["description"] ?? "";
     </div>
   
     <form method="post" enctype="multipart/form-data">
-      <input type="text" name="name" value="<?= $name; ?>">
-      <input type="number" step="0.01" name="price" value="<?= $price; ?>">
-      <textarea name="description"><?= $description; ?></textarea>
-      <input type="hidden" name="MAX_FILE_SIZE" value="<?= ImageUpload::max_file_size(); ?>">
-      <input type="file" name="upload[]" multiple>
-      <input type="submit">
+      <div class="form-group">
+        <input class="form-control" type="text" name="name" value="<?= $name; ?>">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="number" step="0.01" name="price" value="<?= $price; ?>">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" name="description"><?= $description; ?></textarea>
+      </div>
+      <div class="form-group">
+          <input class="" type="hidden" name="MAX_FILE_SIZE" value="<?= ImageUpload::max_file_size(); ?>">
+        <input class="form-control" type="file" name="upload[]" multiple>
+      </div>
+      <input type="submit" class="btn btn-primary">
     </form>
 
   </main>

@@ -77,8 +77,8 @@ class Upload {
       $name_array = explode(".", $name);
       $extension = end($name_array);
 
-      // $destination = $this->upload_folder . "/" . uniqid() . "." . $extension;
-      $destination = $this->upload_folder . "/" . $name;
+      $destination = $this->upload_folder . "/" . uniqid() . "." . $extension;
+      // $destination = $this->upload_folder . "/" . $name;
 
       move_uploaded_file($tmp_name, $destination);
     }

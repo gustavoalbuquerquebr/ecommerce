@@ -22,7 +22,7 @@ $password = $_POST["password"] ?? "";
 ?>
 <?php require_default_header("Create admin"); ?>
 
-  <main>
+  <main class="container">
   
     <h1>Create admin</h1>
 
@@ -34,10 +34,14 @@ $password = $_POST["password"] ?? "";
       <?php endif; ?>
     </div>
   
-    <form method="post">
-      <input type="text" name="email" value="<?= $email; ?>">
-      <input type="password" name="password" value="<?= $password; ?>">
-      <input type="submit">
+    <form method="post" class="create-admin mx-auto">
+      <div class="form-group">
+        <input class="form-control" type="text" name="email" value="<?= $email; ?>">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" name="password" value="<?= $password; ?>">
+      </div>
+      <input type="submit" class="btn btn-primary">
     </form>
 
   </main>

@@ -10,13 +10,13 @@ $transactions = Transaction::fetch_all("ASC");
 ?>
 <?php require_default_header("Admin"); ?>
 
-  <main>
+  <main class="container">
   
     <h1>Transactions</h1>
 
-    <table>
+    <table class="mt-4 table table-striped text-center">
     
-      <thead>
+      <thead class="thead-dark">
         <th>ID</th>
         <th>Client</th>
         <th>Card</th>

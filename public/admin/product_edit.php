@@ -56,7 +56,7 @@ $description = $product->description;
 ?>
 <?php require_default_header("Edit product"); ?>
 
-  <main>
+  <main class="container">
 
     <h1>Edit product</h1>
 
@@ -69,22 +69,32 @@ $description = $product->description;
     <?php endif; ?>
 
     <?php if ($images = $product->images()): ?>
-      <div id="images">
+      <div id="images" class="mt-4">
         <?php foreach ($images as $image): ?>
           <img src="<?= $image; ?>" width="50" >
         <?php endforeach; ?>
       </div>
     <?php endif; ?>
   
-    <form method="post" id="edit" enctype="multipart/form-data">
+    <form method="post" id="edit" enctype="multipart/form-data" class="mt-4">
       <input type="number" name="id" value="<?= $id; ?>" style="display: none;">
-      <input type="text" name="name" value="<?= $name; ?>">
-      <input type="number" step="0.01" name="price" value="<?= $price; ?>">
-      <textarea name="description"><?= $description; ?></textarea>
-      <input type="hidden" name="MAX_FILE_SIZE" value="<?= ImageUpload::max_file_size(); ?>">
-      <input type="file" name="uploads[]" multiple>
-      <input type="text" name="delete" value="" class="d-none" id="delete">
-      <input type="submit" name="submit" value="submit">
+      <div class="form-group">
+        <input class="form-control" type="text" name="name" value="<?= $name; ?>">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="number" step="0.01" name="price" value="<?= $price; ?>">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" name="description"><?= $description; ?></textarea>
+      </div>
+      <div class="form-group">
+        <input type="hidden" name="MAX_FILE_SIZE" value="<?= ImageUpload::max_file_size(); ?>">
+        <input class="form-control" type="file" name="uploads[]" multiple>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="delete" value="" class="d-none" id="delete">
+      </div>
+      <input class="btn btn-primary" type="submit" name="submit" value="submit">
     </form>
 
   </main>

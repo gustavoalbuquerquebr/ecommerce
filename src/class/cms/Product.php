@@ -33,23 +33,30 @@ class Product extends DatabaseObject {
 
     $image_folder = make_url("public/assets/img/products/{$this->id}");
 
+    $paths = [];
+
     if (file_exists($image_folder)) {
 
       $images = scandir($image_folder);
       $images = array_diff($images, [".", ".."]);
 
-      foreach ($images as $key => $image) {
-        $images[$key] = make_url("public/assets/img/products/{$this->id}/{$image}", true);
+      foreach ($images as $image) {
+        $paths[] = make_url("public/assets/img/products/{$this->id}/{$image}", true);
       }
     }
 
-    return $images ?? null;
+    return $paths;
   }
 
 
   public function price() {
     $price = "$" . $this->price / 100;
     return $price;
+  }
+
+
+  public function description($length = 100) {
+    return substr($this->description, 0, $length) . "...";
   }
 
 }

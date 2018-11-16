@@ -6,4 +6,4 @@ define("PROJECT_NAME", "myCMS ecommerce");
 define("ROOT", $_SERVER["DOCUMENT_ROOT"] . $_SERVER["PROJECT_ROOT"]);
 
 // pagination, limit of products
-define("PRODUCTS_PER_PAGE", 3);
+define("PRODUCTS_PER_PAGE", 12);
